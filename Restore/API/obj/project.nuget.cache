@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "TjML2SDg+Yo=",
+  "dgSpecHash": "9PZuWXukI7k=",
   "success": true,
   "projectFilePath": "/Users/samirhebibov/Desktop/E-Commerse/Restore/API/API.csproj",
-  "expectedPackageFiles": [
-    "/Users/samirhebibov/.nuget/packages/microsoft.aspnetcore.openapi/9.0.3/microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
-    "/Users/samirhebibov/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
