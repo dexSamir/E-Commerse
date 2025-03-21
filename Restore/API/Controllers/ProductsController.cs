@@ -15,7 +15,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async ActionResult<Product> GetProduct(int id)
+        public ActionResult<Product> GetProduct(int id)
         {
             var product = _context.Products.Find(id); 
 
