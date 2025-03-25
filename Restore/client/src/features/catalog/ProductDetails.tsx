@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Product } from "../../app/models/product";
-import { Button, Divider, Grid2, Table, TableBody, TableContainer, TextField, Typography } from "@mui/material";
+import { Button, Divider, Grid2, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
 
 export default function ProductDetails() {
   const { id } = useParams();
@@ -17,6 +17,14 @@ export default function ProductDetails() {
   if(!product) 
     return <div>Loading...</div>
 
+  const productDetails = [
+    {label: 'Name', value: product.name},
+    {label: 'Description', value: product.description},
+    {label: 'Type', value: product.type},
+    {label: 'Brand', value: product.brand},
+    {label: 'Quantity in stock', value: product.quantity},
+  ]
+
   return (
     <Grid2 container spacing={6} maxWidth='lg' sx={{mx: 'auto'}}> 
         <Grid2 size={6}>
@@ -27,9 +35,16 @@ export default function ProductDetails() {
             <Divider sx={{mb:2}}/>
             <Typography variant="h4" color="secondary">${(product.price / 100).toFixed(2)}</Typography>
             <TableContainer>
-                <Table>
+                <Table sx={{'& td': {
+                    fontSize: '1rem',
+                }}}>
                     <TableBody>
-                        Table goes here...
+                        {productDetails.map((detail, index) => (
+                            <TableRow key={index}>
+                                <TableCell sx={{fontWeight: 'bold'}}>{detail.label}</TableCell>
+                                <TableCell>{detail.value}</TableCell>
+                            </TableRow>
+                        ))}
                     </TableBody>
                 </Table>
             </TableContainer>
@@ -39,7 +54,7 @@ export default function ProductDetails() {
                     fullWidth defaultValue={1}/>
                 </Grid2>
                 <Grid2 size={6}>
-                    <Button color='primary' size="large" variant="contained" fullWidth>
+                    <Button color='primary' size="large" variant="contained" fullWidth sx={{height:'55px'}}>
                         Add to Basket
                     </Button>
                 </Grid2>
