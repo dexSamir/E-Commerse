@@ -11,11 +11,11 @@ export const router = createBrowserRouter([
     path: "/",
     element: <App />,
     children: [
-      { path: "", element: <HomePage />},
-      { path: '/catalog', element: <Catalog /> },
-      { path: '/catalog/:id', element: <ProductDetails /> },
-      { path: '/contact', element: <ContactPage /> },
-      { path: '/about', element: <AboutPage /> }
-    ]
-  }
+      { path: "", element: <HomePage /> },
+      { path: "/catalog", element: <Catalog /> },
+      { path: "/catalog/:id", element: <ProductDetails /> },
+      { path: "/contact", element: <ContactPage /> },
+      { path: "/about", element: <AboutPage /> },
+    ],
+  },
 ]);
