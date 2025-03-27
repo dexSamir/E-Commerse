@@ -9,10 +9,16 @@ import {
 } from "@mui/material";
 import { Outlet } from "react-router-dom";
 
+const getInitialDarkMode = () => {
+  const storedDarkMode = localStorage.getItem("darkMode");
+  return storedDarkMode ? JSON.parse(storedDarkMode) : true;
+};
+
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(getInitialDarkMode());
 
   const toggleDarkMode = () => {
+    localStorage.setItem("darkMode", JSON.stringify(!darkMode));
     setDarkMode(!darkMode);
   };
 
@@ -26,7 +32,6 @@ function App() {
       },
     },
   });
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -42,7 +47,7 @@ function App() {
         }}
       >
         <Container maxWidth="xl" sx={{ mt: 8 }}>
-          <Outlet/>
+          <Outlet />
         </Container>
       </Box>
     </ThemeProvider>

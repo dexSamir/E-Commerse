@@ -4,12 +4,14 @@ import {
   Badge,
   Box,
   IconButton,
+  LinearProgress,
   List,
   ListItem,
   Toolbar,
   Typography,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { useAppSelector } from "../store/store";
 
 const midLinks = [
   { title: "catalog", path: "/catalog" },
@@ -40,10 +42,17 @@ type Props = {
 };
 
 export default function NavBar({ darkMode, toggleDarkMode }: Props) {
+  const { isLoading } = useAppSelector((state) => state.ui);
   return (
     <AppBar position="fixed">
-      <Toolbar sx={{display:"flex", justifyContent:'space-between', alignItems: 'center'}}>
-        <Box display='flex' alignItems='center'>
+      <Toolbar
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Box display="flex" alignItems="center">
           <Typography component={NavLink} sx={navStyles} to="/" variant="h6">
             RE-STORE
           </Typography>
@@ -58,7 +67,7 @@ export default function NavBar({ darkMode, toggleDarkMode }: Props) {
             </ListItem>
           ))}
         </List>
-        <Box display='flex' alignItems='center'>
+        <Box display="flex" alignItems="center">
           <IconButton size="large" sx={{ color: "inherit" }}>
             <Badge badgeContent="4" color="secondary">
               <ShoppingCart />
@@ -74,6 +83,11 @@ export default function NavBar({ darkMode, toggleDarkMode }: Props) {
           </List>
         </Box>
       </Toolbar>
+      {isLoading && (
+        <Box sx={{ width: "100%" }}>
+          <LinearProgress color="primary" />
+        </Box>
+      )}
     </AppBar>
   );
 }
