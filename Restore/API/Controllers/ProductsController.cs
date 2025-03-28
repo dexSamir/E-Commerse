@@ -4,9 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
-[ApiController]
-[Route("api/[controller]")]
-public class ProductsController(StoreContext _context) : ControllerBase
+public class ProductsController(StoreContext _context) : BaseApiController
 {
     [HttpGet] //https://localhost:5001/api/products
     public async Task<ActionResult<List<Product>>> GetProducts()
